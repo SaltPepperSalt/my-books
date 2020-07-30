@@ -27,7 +27,7 @@ class Signin extends React.Component {
               </Col>
               <Col span={12} className={styles.sign_login}>
 
-                <h1>My Books</h1>
+                <h1>Welcome to My Books</h1>
                 <p className={styles.sign_id}>
                   <div>Email</div>
                   <Input className={styles.sign_input} type="email" value={this.state.email} onChange={this.change} />
