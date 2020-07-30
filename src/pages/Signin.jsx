@@ -29,11 +29,11 @@ class Signin extends React.Component {
 
                 <h1>My Books</h1>
                 <p className={styles.sign_id}>
-                  <div>Email</div>
+                  <div>Email*</div>
                   <Input className={styles.sign_input} type="email" value={this.state.email} onChange={this.change} />
                 </p>
                 <p className={styles.sign_pw}>
-                  <div>Password</div>
+                  <div>Password*</div>
                   <Input className={styles.sign_input} type="password" ref={this.passwordRef} />
                 </p>
                 <p>
