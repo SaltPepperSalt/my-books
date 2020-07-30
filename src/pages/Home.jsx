@@ -1,6 +1,8 @@
 import React from 'react';
+import withAuth from '../hocs/withAuth'
 
-export default function Home() {
+
+function Home() {
   return (
     <div>
       <h1>Home</h1>
@@ -8,3 +10,4 @@ export default function Home() {
   );
 }
 
+export default withAuth(Home, true);
