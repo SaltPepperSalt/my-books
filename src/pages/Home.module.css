@@ -1,4 +1,34 @@
-.home {
-  width: 80%;
+.body {
+  box-sizing: border-box;
 }
 
+.home {
+  position: relative;
+}
+
+.books {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.book_author {
+  text-align: right;
+  padding-right: 20px;
+}
+
+.logout_button {
+  position: absolute;
+  top: 8px;
+  right: 0;
+}
+
+.link {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 0 5px;
+}
+
+.books_img {
+  width: 100%;
+  margin-bottom: 20px;
+}

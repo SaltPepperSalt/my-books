@@ -3,9 +3,11 @@ import withAuth from '../hocs/withAuth'
 import axios from 'axios';
 import Counter from '../components/Counter'
 import PersonContext from '../contexts/PersonContext';
-import { Row, Col } from 'antd'
+import { Row, Col, Button } from 'antd'
 import "antd/dist/antd.css"
-import './Home.module.css'
+import { LinkOutlined } from '@ant-design/icons'
+import styles from './Home.module.css'
+import { Link } from 'react-router-dom';
 
 function Home(props) {
   const context = useContext(PersonContext);
@@ -25,20 +27,42 @@ function Home(props) {
       <Row justify="center">
         <Col span={20} className="home">
           <h1>Home</h1>
+          <Row>
+            <Col span={24}>
+              <img src="/books.jpg" alt="books" className={styles.books_img} />
+            </Col>
+          </Row>
+          <Link to="/signin">
+            <Button
+              type="default"
+              className={styles.logout_button}
+              onClick={logout}
+            >
+              Logout
+          </Button>
+          </Link>
           {state.loading && 'Loading'}
           {state.err && 'Error'}
           {state.err === null && state.loading === false && state.books.map(book => {
             return (
-              <Row>
-                <span>{book.title}</span>
-                <span>{book.author}</span>
-                <LinkOutlined />
+              <Row className={styles.books}>
+                <Col span={12}>{book.title}</Col>
+                <Col className={styles.book_author} span={10}>{book.author}</Col>
+                <Col span={2}>
+                  <a
+                    href={book.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="교보문고 사이트로 이동"
+                    className={styles.link}
+                  >
+                    <LinkOutlined />
+                  </a>
+                </Col>
               </Row>
             )
           })
           }
-          < Counter />
-          <p>{JSON.stringify(context)}</p>
         </Col>
       </Row>
     </div >
@@ -68,4 +92,7 @@ async function fetchData(props, state, setState) {
   } catch (err) {
     console.log(err);
   }
+}
+const logout = () => {
+  sessionStorage.removeItem('token');
 }
