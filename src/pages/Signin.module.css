@@ -23,7 +23,7 @@
 }
 
 .sign_login h1 {
-  margin-left: 10px;
+  margin-left: 20px;
   grid-area: head;
 }
 
@@ -40,11 +40,11 @@
 }
 
 .sign_btn {
-  margin-top: 20px;
+  margin-top: 22px;
 
   grid-area: button;
   margin-left: 20px;
-  height: 92px;
+  height: 91px;
 }
 
 .sign_input {
