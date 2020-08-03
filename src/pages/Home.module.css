@@ -2,8 +2,24 @@
   box-sizing: border-box;
 }
 
+.body_dark {
+  background-color: #181818;
+  color: white;
+}
+
+.h1_dark {
+  color: white;
+}
+
 .home {
   position: relative;
+}
+
+.loading {
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  font-size: 40px;
 }
 
 .books {
@@ -31,4 +47,23 @@
 .books_img {
   width: 100%;
   margin-bottom: 20px;
+}
+
+.top_btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  font-size: 30px;
+}
+
+.mode_btn {
+  position: absolute;
+  top: 8px;
+  right: 90px;
+}
+
+.btn_dark {
+  background-color: #555;
+  color: white;
+  border: #181818;
 }
