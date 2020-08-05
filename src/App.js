@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import ErrorBoundary from 'antd/lib/alert/ErrorBoundary';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Button } from 'antd'
-import styles from './App.module.css'
-import classNames from 'classnames'
+
 
 
 //pages
@@ -45,7 +43,9 @@ export default function App() {
                 <Route path="/" exact
                   render={() => <NewHome change={setState} />}>
                 </Route>
-                <Route component={NotFound} />
+                <Route
+                  component={NotFound}
+                ></Route>
               </Switch>
 
             </BrowserRouter>

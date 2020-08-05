@@ -52,22 +52,7 @@ class Signin extends React.Component {
     console.log(this.passwordRef)
     const password = this.passwordRef.current.state.value;
     if (email === '' || password === '') return;
-    try {
-      const response = await axios.post('https://api.marktube.tv/v1/me', { email, password });
-      const token = response.data.token;
-      sessionStorage.setItem('token', token);
-      this.props.history.push('/');
-    } catch (err) {
-      const errCode = err.response.data.error;
-      console.log(errCode)
-      if (errCode === 'PASSWORD_NOT_MATCH') {
-        message.error('Password Not Match');
-      } else if (errCode === 'USER_NOT_EXIST') {
-        message.error('Unvalid User Email');
-      } else {
-        message.error('Unknown Error');
-      }
-    }
+
   }
   change = e => {
     this.setState({ email: e.target.value })
