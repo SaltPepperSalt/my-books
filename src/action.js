@@ -1,5 +1,4 @@
 // Wirte all Actions here
-import axios from 'axios';
 import BookService from './services/BookService';
 import UserService from './services/UserService';
 // 액션의 타입을 정의하여 변수로 빼는 단계
@@ -70,17 +69,17 @@ export const LOGIN_START = 'LOGIN_START'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAIL = 'LOGIN_FAIL'
 
-export const loginStart = () => ({
+const loginStart = () => ({
   type: LOGIN_START
 })
 
 
-export const loginSuccess = (token) => ({
+const loginSuccess = (token) => ({
   type: LOGIN_SUCCESS,
   token
 })
 
-export const loginFail = (err) => ({
+const loginFail = (err) => ({
   type: LOGIN_FAIL,
   err
 })
@@ -88,12 +87,15 @@ export const loginFail = (err) => ({
 export const loginThunk = (email, password) => {
   return async (dispatch) => {
     try {
+      dispatch(loginStart())
       const token = await UserService.login(email, password);
       sessionStorage.setItem('token', token);
+      dispatch(loginSuccess(token))
       this.props.history.push('/');
     } catch (err) {
       const errCode = err.response.data.error;
       console.log(errCode)
+      dispatch(loginFail(errCode));
 
     }
   }

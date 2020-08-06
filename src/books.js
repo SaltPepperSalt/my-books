@@ -3,8 +3,6 @@
 //상태는 항상 고정적으로 만들어 둔다.
 
 import {
-  START_LOADING,
-  END_LOADING,
   START_GET_BOOKS,
   SUCCESS_GET_BOOKS,
   FAIL_GET_BOOKS
@@ -16,21 +14,8 @@ const initialState = {
   error: null,
 };
 
-export default function reduce(prevState, action) {
-  if (prevState === undefined) {
-    return initialState;
-  }
+export default function books(prevState = initialState, action) {
   switch (action.type) {
-    // case START_LOADING:
-    //   return {
-    //     loading: true,
-    //   }
-    //   case END_LOADING:
-    //     return {
-    //       loading: false,
-    //     }
-    //     default:
-    //       return prevState
     case START_GET_BOOKS:
       return {
         loading: true,

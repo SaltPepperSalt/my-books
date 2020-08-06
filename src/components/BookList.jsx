@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function BookList({ books, loading, err, getBooks }) {
+export default function BookList({ books, loading, error, getBooks }) {
   React.useEffect(() => {
     getBooks();
   }, [getBooks]);
@@ -8,8 +8,8 @@ export default function BookList({ books, loading, err, getBooks }) {
     <div>
       BookList
       {loading && <p>Loading</p>}
-      {err && <p>Error</p>}
-      {err === null && books.map((book) =>
+      {error && <p>Error</p>}
+      {error === null && books.map((book) =>
         <p>{book.title}</p>
       )}
     </div>
