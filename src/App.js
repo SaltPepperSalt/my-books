@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 //pages
 import Home from './pages/Home'
-import Signin from './pages/Signin'
+// import Signin from './pages/Signin'
 import NotFound from './pages/NotFound'
 import FatalError from './pages/FatalError'
 
@@ -14,6 +14,7 @@ import withAuth from './hocs/withAuth';
 import withoutAuth from './hocs/withoutAuth';
 import PersonContext from './contexts/PersonContext';
 import DarkContext from './contexts/DarkContext';
+import SigninContainer from './containers/SigninContainer';
 
 const persons = [
   { id: 0, name: 'Mark', age: 38 },
@@ -39,7 +40,7 @@ export default function App() {
 
             <BrowserRouter >
               <Switch>
-                <Route path="/signin" component={withoutAuth(Signin)}></Route>
+                <Route path="/signin" component={SigninContainer}></Route>
                 <Route path="/" exact
                   render={() => <NewHome change={setState} />}>
                 </Route>

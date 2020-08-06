@@ -1,6 +1,7 @@
 // Wirte all Actions here
 import BookService from './services/BookService';
 import UserService from './services/UserService';
+import TokenService from './services/TokenService';
 // 액션의 타입을 정의하여 변수로 빼는 단계
 export const START_LOADING = 'START_LOADING';
 export const END_LOADING = 'END_LOADING';
@@ -84,19 +85,29 @@ const loginFail = (err) => ({
   err
 })
 
-export const loginThunk = (email, password) => {
+export const loginThunk = (email, password, history) => {
   return async (dispatch) => {
     try {
       dispatch(loginStart())
       const token = await UserService.login(email, password);
-      sessionStorage.setItem('token', token);
+      TokenService.save(token)
       dispatch(loginSuccess(token))
-      this.props.history.push('/');
+      history.push('/')
     } catch (err) {
-      const errCode = err.response.data.error;
-      console.log(errCode)
-      dispatch(loginFail(errCode));
+      dispatch(loginFail(err));
 
     }
   }
 }
+
+//dark mode
+export const DARK_MODE = 'DARK_MODE';
+export const LIGHT_MODE = 'LIGHT_MODE';
+
+export const darkMode = () => ({
+  mode: true
+})
+
+export const lightMode = () => ({
+  mode: false
+})

@@ -24,7 +24,7 @@ export default function books(prevState = initialState, action) {
       }
       case SUCCESS_GET_BOOKS:
         return {
-          loading: true,
+          loading: false,
             books: action.books,
             error: null,
         }
