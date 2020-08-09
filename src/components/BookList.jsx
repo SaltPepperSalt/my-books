@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React from 'react';
 import { LinkOutlined, UpCircleOutlined, LoadingOutlined } from '@ant-design/icons'
 import styles from '../pages/Home.module.css'
 import { Link } from 'react-router-dom';
@@ -7,13 +7,11 @@ import classNames from 'classnames'
 import "antd/dist/antd.css"
 import { Row, Col, Button } from 'antd'
 
-import { useSelector, useDispatch } from 'react-redux';
+import BookDelete from './BookDelete';
 
-import darkModeReducer from '../darkmode';
 
 export default function BookList({ books, loading, error, getBooks }) {
-  const mode = useSelector(state => state.darkmode.mode)
-  const dispatch = useDispatch();
+  const mode = true;
   React.useEffect(() => {
     getBooks();
   }, [getBooks]);
@@ -27,28 +25,14 @@ export default function BookList({ books, loading, error, getBooks }) {
               <img src="/books.jpg" alt="books" className={styles.books_img} />
             </Col>
           </Row>
-          <Link to="/signin">
-            <Button
-              type="default"
-              className={classNames(styles.logout_button, mode && styles.btn_dark)}
-              onClick={logout}
-            >
-              Logout
-          </Button>
-            <Button
-              type="default"
-              className={classNames(styles.mode_btn, mode && styles.btn_dark)}
-              onClick={() => {
-                dispatch(darkModeReducer(undefined, { type: 'aaa', mode: !mode }))
-              }}
-            >
-              Dark Mode
-      </Button>
+          <Link to="/signin" onClick={logout}>
+            Logout </Link>
+          <Link to='/addbook'> AddBook
           </Link>
           {error && 'Error'}
           <Row className={styles.books}>
             <Col span={12}>Title</Col>
-            <Col className={styles.book_author} span={10}>Author</Col>
+            <Col className={styles.book_author} span={8}>Author</Col>
             <Col span={2} className={styles.link}>
               Link
             </Col>
@@ -60,7 +44,7 @@ export default function BookList({ books, loading, error, getBooks }) {
             return (
               <Row className={styles.books}>
                 <Col span={12}>{book.title}</Col>
-                <Col className={styles.book_author} span={10}>{book.author}</Col>
+                <Col className={styles.book_author} span={8}>{book.author}</Col>
                 <Col span={2}>
                   <a
                     href={book.url}
@@ -71,6 +55,9 @@ export default function BookList({ books, loading, error, getBooks }) {
                   >
                     <LinkOutlined />
                   </a>
+                </Col>
+                <Col span={2}>
+                  <BookDelete bookId={book.bookId} />
                 </Col>
               </Row>
             )

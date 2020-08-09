@@ -1,7 +1,7 @@
 import React from 'react';
 import BookList from '../components/BookList'
 import { useSelector, useDispatch } from 'react-redux';
-import { getBooksThunk } from '../action';
+import { getBooksSagaActionCreator } from '../redux/modules/books';
 
 
 export default function BookListContainer({ token }) {
@@ -10,8 +10,8 @@ export default function BookListContainer({ token }) {
   const error = useSelector(state => state.books.error);
   const dispatch = useDispatch();
   const getBooks = React.useCallback(() => {
-    dispatch(getBooksThunk(token));
-  }, [dispatch, token])
+    dispatch(getBooksSagaActionCreator());
+  }, [dispatch])
 
   return (
     <BookList books={books} loading={loading} error={error} getBooks={getBooks} />

@@ -46,7 +46,7 @@ function Signin(props) {
     </form >
 
   );
-  async function click() {
+  function click() {
     const email = state.email;
     console.log(passwordRef)
     const password = passwordRef.current.state.value;

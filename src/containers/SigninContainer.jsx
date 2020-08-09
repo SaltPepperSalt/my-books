@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react';
 import Signin from '../pages/Signin';
 import { useDispatch } from 'react-redux';
-import { loginThunk } from '../action';
+import { startLoginSagaActionCreator } from '../redux/modules/auth';
 
-export default function SigninContainer({ history }) {
+export default function SigninContainer() {
   const dispatch = useDispatch();
-  const login = useCallback((email, password, history) => {
-    dispatch(loginThunk(email, password, history))
+  const login = useCallback((email, password) => {
+    dispatch(startLoginSagaActionCreator(email, password))
   }, [dispatch])
   return (<Signin login={login} />)
 }
