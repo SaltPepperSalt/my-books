@@ -27,7 +27,7 @@ export default function BookList({ books, loading, error, getBooks }) {
           </Row>
           <Link to="/signin" onClick={logout}>
             Logout </Link>
-          <Link to='/addbook'> AddBook
+          <Link to='/addbook'> ADDBOOK
           </Link>
           {error && 'Error'}
           <Row className={styles.books}>
