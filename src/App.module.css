@@ -1,0 +1,10 @@
+.mode_btn {
+  position: "fixed";
+  bottom: 20px;
+}
+
+.btn_dark {
+  background-color: #555;
+  color: white;
+  border: #181818;
+}

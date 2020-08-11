@@ -1,10 +1,20 @@
 import React from 'react';
+import withAuth from '../hocs/withAuth'
 
-export default function Home() {
+import BookListContainer from '../containers/BookListContainer';
+
+function Home(props) {
+
+
   return (
-    <div>
-      <h1>Home</h1>
-    </div>
+    <BookListContainer token={props.token} />
   );
 }
+
+export default withAuth(Home);
+
+
+
+
+
 
