@@ -27,9 +27,8 @@ export default function AddBooks(props) {
     const message = messageRef.current.value;
     const url = urlRef.current.value;
 
-    const payload = { title, author, message, url }
 
-    props.addBook(payload);
+    props.addBook({ title, author, message, url });
 
   }
 
